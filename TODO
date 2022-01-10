@@ -1,0 +1,5 @@
+1. Klasa sensor
+2. Klasa command
+3. move, rotate dziedziczą po command
+4. Klasa compose trzymająca wektor command, również dziedziczy po command
+5. Łazik trzyma mapę char -> command
