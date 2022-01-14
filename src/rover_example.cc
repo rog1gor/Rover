@@ -37,12 +37,12 @@ int main() {
 //    } catch (std::exception const& e) {
 //    }
 //
-//    // Po lądowaniu łazik wykonuje przesłane komendy.
+    // Po lądowaniu łazik wykonuje przesłane komendy.
 //    rover.land({0, 0}, Direction::EAST);
 //    std::cout << rover << std::endl;
-//    rover.execute("FFBRLU");
+    rover.execute("FFBRLU");
 //    std::cout << rover << std::endl;
-//
+
 //    // Łazik zatrzymuje się, gdy napotka nieznaną komendę.
 //    rover.execute("FXFFF");
 //    std::cout << rover << std::endl;

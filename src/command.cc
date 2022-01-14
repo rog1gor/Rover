@@ -32,12 +32,12 @@ bool Command::check_all_sensors(Position position, const sensors_container_t &se
     return true;
 }
 
-// TODO
-command_result_t Command::execute(Position position, const sensors_container_t &sensors) {
-    return command_result_t();
+// TODO raczej niepotrzebne
+CommandResult Command::execute(Position position, const sensors_container_t &sensors) {
+    return CommandResult(Position(), {});
 }
 
-command_result_t MoveForward::execute(Position position, const sensors_container_t &sensors) {
+CommandResult MoveForward::execute(Position position, const sensors_container_t &sensors) {
     Position new_position = position;
     Vector move_vector = get_vector_of_direction(position.get_direction());
     new_position.set_coordinates(new_position.get_coordinates() + move_vector);
@@ -50,19 +50,19 @@ command_result_t MoveForward::execute(Position position, const sensors_container
     }
 }
 
-command_result_t MoveBackward::execute(Position position, const sensors_container_t &sensors) {
+CommandResult MoveBackward::execute(Position position, const sensors_container_t &sensors) {
 
 }
 
-command_result_t RotateRight::execute(Position position, const sensors_container_t &sensors) {
+CommandResult RotateRight::execute(Position position, const sensors_container_t &sensors) {
 
 }
 
-command_result_t RotateLeft::execute(Position position, const sensors_container_t &sensors) {
+CommandResult RotateLeft::execute(Position position, const sensors_container_t &sensors) {
 
 }
 
-command_result_t Compose::execute(Position position, const sensors_container_t &sensors) {
+CommandResult Compose::execute(Position position, const sensors_container_t &sensors) {
 
 }
 

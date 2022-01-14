@@ -1,3 +1,4 @@
+#include <iostream>
 #include "position_utils.h"
 
 
@@ -16,7 +17,7 @@ Direction get_direction_of_value(unsigned long value) {
     }
     else {
         // TODO do poprawienia
-        throw std::exception();
+        std::cerr << "wrong direction\n";
     }
 }
 

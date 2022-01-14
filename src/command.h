@@ -5,36 +5,50 @@
 #include <vector>
 #include "sensor.h"
 
-using command_result_t = std::pair<Position, bool>;
+class CommandResult {
+    Position position;
+    bool is_stopped;
+
+public:
+    CommandResult(Position position, bool is_stopped) : position(position), is_stopped(is_stopped) {}
+
+    Position get_position() {
+        return position;
+    }
+
+    bool get_is_stopped() {
+        return is_stopped;
+    }
+};
 
 class Command {
 protected:
     bool check_all_sensors(Position position, const sensors_container_t &sensors);
 
 public:
-    virtual command_result_t execute(Position position, const sensors_container_t &sensors);
+    virtual CommandResult execute(Position position, const sensors_container_t &sensors);
 };
 
 using command_ptr = std::shared_ptr<Command>;
 
 class MoveForward : public Command {
-    command_result_t execute(Position position, const sensors_container_t &sensors) override;
+    CommandResult execute(Position position, const sensors_container_t &sensors) override;
 };
 
 class MoveBackward : public Command {
-    command_result_t execute(Position position, const sensors_container_t &sensors) override;
+    CommandResult execute(Position position, const sensors_container_t &sensors) override;
 };
 
 class RotateRight : public Command {
-    command_result_t execute(Position position, const sensors_container_t &sensors) override;
+    CommandResult execute(Position position, const sensors_container_t &sensors) override;
 };
 
 class RotateLeft : public Command {
-    command_result_t execute(Position position, const sensors_container_t &sensors) override;
+    CommandResult execute(Position position, const sensors_container_t &sensors) override;
 };
 
 class Compose : public Command {
-    command_result_t execute(Position position, const sensors_container_t &sensors) override;
+    CommandResult execute(Position position, const sensors_container_t &sensors) override;
     std::vector<command_ptr> commands;
 public:
     Compose(std::initializer_list<command_ptr> commands);
