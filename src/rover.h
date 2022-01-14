@@ -3,8 +3,6 @@
 
 #include <map>
 #include "command.h"
-#include "sensor.h"
-#include "position_utils.h"
 
 class RoverBuilder;
 
@@ -13,7 +11,7 @@ class Rover {
 
     std::map<char, command_ptr> commands_map;
     Position position;
-    std::vector<sensor_ptr> sensors;
+    sensors_container_t sensors;
 
     bool is_landed = false;
     bool is_stopped = false;
@@ -21,6 +19,7 @@ class Rover {
     void add_sensor(sensor_ptr &&sensor);
 
     void program_command(const char command_name, command_ptr &&command);
+
 public:
     Rover() : commands_map(), sensors() {};
 

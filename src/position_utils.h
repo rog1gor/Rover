@@ -1,6 +1,8 @@
 #ifndef ROVER_POSITION_UTILS_H
 #define ROVER_POSITION_UTILS_H
 
+#include <map>
+
 using coordinate_t = int; // TODO
 
 enum Direction {
@@ -12,32 +14,13 @@ enum Direction {
 
 const static size_t number_of_directions = 4;
 
-Direction get_direction_of_value(unsigned long value) {
-    if (value == 0) {
-        return NORTH;
-    }
-    else if (value == 1) {
-        return EAST;
-    }
-    else if (value == 2) {
-        return SOUTH;
-    }
-    else if (value == 3) {
-        return WEST;
-    }
-    else {
-        // TODO do poprawienia
-        throw std::exception();
-    }
-}
 
-Direction get_direction_turned_right(const Direction &direction) {
-    return get_direction_of_value((direction + 1) % number_of_directions);
-}
+Direction get_direction_of_value(unsigned long value);
 
-Direction get_direction_turned_left(const Direction &direction) {
-    return get_direction_of_value((direction - 1) % number_of_directions);
-}
+Direction get_direction_turned_right(const Direction &direction);
+
+Direction get_direction_turned_left(const Direction &direction);
+
 
 class Point;
 using Vector = Point;
@@ -45,15 +28,23 @@ using Vector = Point;
 class Point {
     coordinate_t x, y;
 public:
-    constexpr Point() {
+    Point() {
         x = 0;
         y = 0;
     }
 
-    constexpr Point(coordinate_t x, coordinate_t y) : x(x), y(y) {}
+    Point(coordinate_t x, coordinate_t y) : x(x), y(y) {}
 
-    constexpr Point operator+(const Vector &p) const {
-        return {x + p.x, y + p.y};
+    Point operator+(const Vector &v) const {
+        return {x + v.x, y + v.y};
+    }
+
+    coordinate_t get_x() {
+        return x;
+    }
+
+    coordinate_t get_y() {
+        return y;
     }
 };
 
@@ -67,7 +58,20 @@ public:
     }
 
     Position(Point coordinates, Direction direction) : coordinates(coordinates), direction(direction) {}
+
+    Point get_coordinates() {
+        return coordinates;
+    }
+
+    Direction &get_direction() {
+        return direction;
+    }
+
+    void set_coordinates(Point _coordinates) {
+        coordinates = _coordinates;
+    }
 };
 
+Vector get_vector_of_direction(const Direction &direction);
 
 #endif //ROVER_POSITION_UTILS_H

@@ -38,6 +38,6 @@ void Rover::execute(const std::string &commands) {
             break;
         }
         auto command = commands_map[command_name];
-        command->execute(); // TODO
+//        command->execute(); // TODO
     }
 }

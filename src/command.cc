@@ -22,3 +22,47 @@ command_ptr compose(std::initializer_list<command_ptr> commands) {
 }
 
 Compose::Compose(std::initializer_list<command_ptr> commands) : commands(commands) {}
+
+bool Command::check_all_sensors(Position position, const sensors_container_t &sensors) {
+    for (const auto& sensor : sensors) {
+        if (!sensor->is_safe(position.get_coordinates().get_x(), position.get_coordinates().get_y())) {
+            return false;
+        }
+    }
+    return true;
+}
+
+// TODO
+command_result_t Command::execute(Position position, const sensors_container_t &sensors) {
+    return command_result_t();
+}
+
+command_result_t MoveForward::execute(Position position, const sensors_container_t &sensors) {
+    Position new_position = position;
+    Vector move_vector = get_vector_of_direction(position.get_direction());
+    new_position.set_coordinates(new_position.get_coordinates() + move_vector);
+
+    if (check_all_sensors(new_position, sensors)) {
+        return {new_position, false};
+    }
+    else {
+        return {position, true};
+    }
+}
+
+command_result_t MoveBackward::execute(Position position, const sensors_container_t &sensors) {
+
+}
+
+command_result_t RotateRight::execute(Position position, const sensors_container_t &sensors) {
+
+}
+
+command_result_t RotateLeft::execute(Position position, const sensors_container_t &sensors) {
+
+}
+
+command_result_t Compose::execute(Position position, const sensors_container_t &sensors) {
+
+}
+

@@ -3,35 +3,38 @@
 
 #include <memory>
 #include <vector>
+#include "sensor.h"
 
+using command_result_t = std::pair<Position, bool>;
 
 class Command {
-public:
-    virtual void execute() {
+protected:
+    bool check_all_sensors(Position position, const sensors_container_t &sensors);
 
-    }
+public:
+    virtual command_result_t execute(Position position, const sensors_container_t &sensors);
 };
 
 using command_ptr = std::shared_ptr<Command>;
 
 class MoveForward : public Command {
-    void execute() override;
+    command_result_t execute(Position position, const sensors_container_t &sensors) override;
 };
 
 class MoveBackward : public Command {
-    void execute() override;
+    command_result_t execute(Position position, const sensors_container_t &sensors) override;
 };
 
 class RotateRight : public Command {
-    void execute() override;
+    command_result_t execute(Position position, const sensors_container_t &sensors) override;
 };
 
 class RotateLeft : public Command {
-    void execute() override;
+    command_result_t execute(Position position, const sensors_container_t &sensors) override;
 };
 
 class Compose : public Command {
-    void execute() override;
+    command_result_t execute(Position position, const sensors_container_t &sensors) override;
     std::vector<command_ptr> commands;
 public:
     Compose(std::initializer_list<command_ptr> commands);
