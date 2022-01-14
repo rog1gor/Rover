@@ -45,6 +45,11 @@ using Vector = Point;
 class Point {
     coordinate_t x, y;
 public:
+    constexpr Point() {
+        x = 0;
+        y = 0;
+    }
+
     constexpr Point(coordinate_t x, coordinate_t y) : x(x), y(y) {}
 
     constexpr Point operator+(const Vector &p) const {
@@ -57,6 +62,10 @@ class Position {
     Direction direction;
 
 public:
+    Position() {
+        direction = NORTH; // TODO żeby nie krzyczało że niezainicjowane
+    }
+
     Position(Point coordinates, Direction direction) : coordinates(coordinates), direction(direction) {}
 };
 

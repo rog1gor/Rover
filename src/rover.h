@@ -22,7 +22,7 @@ class Rover {
 
     void program_command(const char command_name, command_ptr &&command);
 public:
-    Rover() : commands_map(), sensors();
+    Rover() : commands_map(), sensors() {};
 
     void execute(const std::string &commands);
 
