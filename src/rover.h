@@ -15,10 +15,15 @@ class Rover {
     Position position;
     std::vector<sensor_ptr> sensors;
 
+    bool is_landed = false;
+    bool is_stopped = false;
+
     void add_sensor(sensor_ptr &&sensor);
 
     void program_command(const char command_name, command_ptr &&command);
 public:
+    Rover() : commands_map(), sensors();
+
     void execute(const std::string &commands);
 
     void land(Point coordinates, Direction direction);
