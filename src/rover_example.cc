@@ -30,33 +30,33 @@ int main() {
             .build();
 
     // Przed lądowaniem nie jest możliwe sterowanie łazikiem.
-//    std::cout << rover << std::endl;
-//    try {
-//        rover.execute("F");
-//        assert(false);
-//    } catch (std::exception const& e) {
-//    }
-//
-    // Po lądowaniu łazik wykonuje przesłane komendy.
-//    rover.land({0, 0}, Direction::EAST);
-//    std::cout << rover << std::endl;
-    rover.execute("FFBRLU");
-//    std::cout << rover << std::endl;
+    std::cout << rover << std::endl;
+    try {
+        rover.execute("F");
+        assert(false);
+    } catch (std::exception const& e) {
+    }
 
-//    // Łazik zatrzymuje się, gdy napotka nieznaną komendę.
-//    rover.execute("FXFFF");
-//    std::cout << rover << std::endl;
-//
-//    // Łazik wykonuje poprawne komendy.
-//    rover.execute("FFF");
-//    std::cout << rover << std::endl;
-//
-//    // Łazik zatrzymuje się również, gdy czujniki zgłaszają niebezpieczeństwo.
-//    auto broken_rover = RoverBuilder()
-//            .program_command('X', move_forward())
-//            .add_sensor(std::make_unique<FalseSensor>())
-//            .build();
-//    broken_rover.land({-1, -1}, Direction::WEST);
-//    broken_rover.execute("X");
-//    std::cout << broken_rover << std::endl;
+//     Po lądowaniu łazik wykonuje przesłane komendy.
+    rover.land({0, 0}, Direction::EAST);
+    std::cout << rover << std::endl;
+    rover.execute("FFBRLU");
+    std::cout << rover << std::endl;
+
+    // Łazik zatrzymuje się, gdy napotka nieznaną komendę.
+    rover.execute("FXFFF");
+    std::cout << rover << std::endl;
+
+    // Łazik wykonuje poprawne komendy.
+    rover.execute("FFF");
+    std::cout << rover << std::endl;
+
+    // Łazik zatrzymuje się również, gdy czujniki zgłaszają niebezpieczeństwo.
+    auto broken_rover = RoverBuilder()
+            .program_command('X', move_forward())
+            .add_sensor(std::make_unique<FalseSensor>())
+            .build();
+    broken_rover.land({-1, -1}, Direction::WEST);
+    broken_rover.execute("X");
+    std::cout << broken_rover << std::endl;
 }
