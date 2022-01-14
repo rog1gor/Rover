@@ -27,9 +27,9 @@ public:
 class RoverBuilder {
     Rover rover;
 public:
-    RoverBuilder &&add_sensor(sensor_ptr &&sensor);
+    RoverBuilder &add_sensor(sensor_ptr &&sensor);
 
-    RoverBuilder &&program_command(const char command_name, command_ptr &&command);
+    RoverBuilder &program_command(const char command_name, command_ptr &&command);
 
     Rover &&build();
 };
