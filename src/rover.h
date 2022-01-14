@@ -3,8 +3,13 @@
 
 #include "command.h"
 #include "sensor.h"
+#include "position_utils.h"
 
 class Rover {
+
+};
+
+class RoverBuilder {
 
 };
 
