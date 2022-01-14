@@ -14,12 +14,24 @@ class Rover {
     std::map<char, command_ptr> commands_map;
     Position position;
     std::vector<sensor_ptr> sensors;
-public:
 
+    void add_sensor(sensor_ptr &&sensor);
+
+    void program_command(const char command_name, command_ptr &&command);
+public:
+    void execute(const std::string &commands);
+
+    void land(Point coordinates, Direction direction);
 };
 
 class RoverBuilder {
+    Rover rover;
+public:
+    RoverBuilder &&add_sensor(sensor_ptr &&sensor);
 
+    RoverBuilder &&program_command(const char command_name, command_ptr &&command);
+
+    Rover &&build();
 };
 
 
