@@ -9,7 +9,7 @@ class Sensor {
     };
 };
 
-using sensor_ptr = std::shared_ptr<Sensor>
+using sensor_ptr = std::shared_ptr<Sensor>;
 
 
 #endif //ROVER_SENSOR_H
