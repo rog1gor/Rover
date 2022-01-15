@@ -44,6 +44,7 @@ void Rover::program_command(const char command_name, command_ptr &&command) {
 void Rover::land(Point coordinates, Direction direction) {
     position = {coordinates, direction};
     is_landed = true;
+    is_stopped = false;
 }
 
 void Rover::execute(const std::string &commands) {
