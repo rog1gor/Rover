@@ -10,7 +10,7 @@ class Rover {
     friend RoverBuilder;
     friend std::ostream &operator<<(std::ostream &os, const Rover &rover);
 
-    std::map<char, command_ptr> commands_map; // można chyba dać unordered_map bo klucz jest typem prostym
+    std::map<char, command_ptr> commands_map;
     Position position;
     sensors_container_t sensors;
 
