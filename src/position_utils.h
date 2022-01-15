@@ -3,13 +3,14 @@
 
 #include <map>
 
-using coordinate_t = int; // TODO
+using coordinate_t = int;
 
 enum Direction {
     NORTH,
     EAST,
     SOUTH,
-    WEST
+    WEST,
+    UNINITIALIZED
 };
 
 const static size_t number_of_directions = 4;
@@ -60,7 +61,7 @@ class Position {
 
 public:
     Position() {
-        direction = NORTH; // TODO żeby nie krzyczało że niezainicjowane
+        direction = UNINITIALIZED;
     }
 
     Position(Point coordinates, Direction direction) : coordinates(coordinates), direction(direction) {}
