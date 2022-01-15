@@ -23,14 +23,8 @@ RoverBuilder &RoverBuilder::add_sensor(sensor_ptr &&sensor) {
     return *this;
 }
 
-RoverBuilder &RoverBuilder::program_command(const char command_name, command_ptr &&command) {
+RoverBuilder &RoverBuilder::program_command(const char command_name, command_ptr command) {
     rover.program_command(command_name, std::move(command));
-    return *this;
-}
-
-RoverBuilder &RoverBuilder::program_command(const char command_name, const command_ptr &command) {
-    command_ptr command_copy = command;
-    rover.program_command(command_name, std::move(command_copy));
     return *this;
 }
 
