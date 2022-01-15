@@ -23,15 +23,6 @@ command_ptr compose(std::initializer_list<command_ptr> commands) {
 
 Compose::Compose(std::initializer_list<command_ptr> commands) : commands(commands) {}
 
-bool Command::check_all_sensors(Position position, const sensors_container_t &sensors) {
-    for (const auto& sensor : sensors) {
-        if (!sensor->is_safe(position.get_coordinates().get_x(), position.get_coordinates().get_y())) {
-            return false;
-        }
-    }
-    return true;
-}
-
 CommandResult MoveForward::execute(Position position, const sensors_container_t &sensors) {
     Position new_position = position;
     Vector move_vector = get_vector_of_direction(position.get_direction());
@@ -97,4 +88,3 @@ CommandResult Compose::execute(Position position, const sensors_container_t &sen
 
     return {new_position, false};
 }
-
