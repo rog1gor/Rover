@@ -53,14 +53,14 @@ CommandResult RotateRight::execute(Position position, const sensors_container_t 
     Position new_position = position;
     new_position.set_direction(get_direction_turned_right(position.get_direction()));
 
-    return executed_result(new_position, position, sensors);
+    return {new_position, false};
 }
 
 CommandResult RotateLeft::execute(Position position, const sensors_container_t &sensors) {
     Position new_position = position;
     new_position.set_direction(get_direction_turned_left(position.get_direction()));
 
-    return executed_result(new_position, position, sensors);
+    return {new_position, false};
 }
 
 CommandResult Compose::execute(Position position, const sensors_container_t &sensors) {
