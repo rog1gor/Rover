@@ -28,8 +28,9 @@ RoverBuilder &RoverBuilder::program_command(const char command_name, command_ptr
     return *this;
 }
 
-RoverBuilder &RoverBuilder::program_command(const char command_name, command_ptr &command) {
-    rover.program_command(command_name, std::move(command));
+RoverBuilder &RoverBuilder::program_command(const char command_name, const command_ptr &command) {
+    command_ptr command_copy = command;
+    rover.program_command(command_name, std::move(command_copy));
     return *this;
 }
 
