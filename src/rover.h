@@ -36,6 +36,8 @@ public:
 
     RoverBuilder &program_command(const char command_name, command_ptr &&command);
 
+    RoverBuilder &program_command(const char command_name, command_ptr &command);
+
     Rover &&build();
 };
 
