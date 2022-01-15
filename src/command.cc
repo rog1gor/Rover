@@ -1,6 +1,5 @@
 #include "command.h"
 
-
 command_ptr move_forward() {
     return std::make_shared<MoveForward>();
 }
@@ -22,6 +21,17 @@ command_ptr compose(std::initializer_list<command_ptr> commands) {
 }
 
 Compose::Compose(std::initializer_list<command_ptr> commands) : commands(commands) {}
+
+namespace {
+    CommandResult executed_result(Position new_position, Position old_position, const sensors_container_t &sensors) {
+        if (check_all_sensors(new_position, sensors)) {
+            return {new_position, false};
+        }
+        else {
+            return {old_position, true};
+        }
+    }
+}
 
 CommandResult MoveForward::execute(Position position, const sensors_container_t &sensors) {
     Position new_position = position;
