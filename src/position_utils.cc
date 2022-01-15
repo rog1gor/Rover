@@ -26,22 +26,9 @@ std::ostream &operator<<(std::ostream &os, const Position &position) {
 }
 
 Direction get_direction_of_value(unsigned long value) {
-    if (value == 0) {
-        return NORTH;
-    }
-    else if (value == 1) {
-        return EAST;
-    }
-    else if (value == 2) {
-        return SOUTH;
-    }
-    else if (value == 3) {
-        return WEST;
-    }
-    else {
-        // TODO do poprawienia
-        std::cerr << "wrong direction\n";
-    }
+    static Direction map[] = {NORTH, EAST,SOUTH,WEST};
+
+    return map[value];
 }
 
 Direction get_direction_turned_right(const Direction &direction) {
