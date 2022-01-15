@@ -22,9 +22,6 @@ public:
 };
 
 class Command {
-protected:
-    static bool check_all_sensors(Position position, const sensors_container_t &sensors);
-
 public:
     virtual CommandResult execute(Position position, const sensors_container_t &sensors) = 0;
 };
