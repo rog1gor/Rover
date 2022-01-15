@@ -1,7 +1,6 @@
 #include <iostream>
 #include "position_utils.h"
 
-
 std::ostream &operator<<(std::ostream &os, const Direction &direction) {
     static std::map<Direction, std::string> map = {
             {NORTH, "NORTH"},
@@ -53,4 +52,3 @@ Vector get_vector_of_direction(const Direction &direction) {
 
     return map[direction];
 }
-
