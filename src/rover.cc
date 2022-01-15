@@ -25,6 +25,11 @@ void Rover::program_command(const char command_name, command_ptr &&command) {
     commands_map[command_name] = command; // TODO czy nazwy mogą się powtarzać?
 }
 
+void Rover::land(Point coordinates, Direction direction) {
+    position = {coordinates, direction};
+    is_landed = true;
+}
+
 // TODO niedokończone
 void Rover::execute(const std::string &commands) {
     if (!is_landed) {
