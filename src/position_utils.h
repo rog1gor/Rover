@@ -26,6 +26,8 @@ class Point;
 using Vector = Point;
 
 class Point {
+    friend std::ostream &operator<<(std::ostream &os, const Point &point);
+
     coordinate_t x, y;
 public:
     Point() {
@@ -49,6 +51,8 @@ public:
 };
 
 class Position {
+    friend std::ostream &operator<<(std::ostream &os, const Position &position);
+
     Point coordinates;
     Direction direction;
 

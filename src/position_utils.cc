@@ -2,6 +2,29 @@
 #include "position_utils.h"
 
 
+std::ostream &operator<<(std::ostream &os, const Direction &direction) {
+    static std::map<Direction, std::string> map = {
+            {NORTH, "NORTH"},
+            {WEST, "WEST"},
+            {SOUTH, "SOUTH"},
+            {EAST, "EAST"}
+    };
+
+    os << map[direction];
+
+    return os;
+}
+
+std::ostream &operator<<(std::ostream &os, const Point &point) {
+    os << "(" << point.x << ", " << point.y << ")";
+    return os;
+}
+
+std::ostream &operator<<(std::ostream &os, const Position &position) {
+    os << position.coordinates << " " << position.direction;
+    return os;
+}
+
 Direction get_direction_of_value(unsigned long value) {
     if (value == 0) {
         return NORTH;
