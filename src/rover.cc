@@ -1,6 +1,6 @@
 #include <iostream>
 #include "rover.h"
-
+#include "exceptions.h"
 
 std::ostream &operator<<(std::ostream &os, const Rover &rover) {
     if (!rover.is_landed) {
@@ -39,6 +39,7 @@ void Rover::add_sensor(sensor_ptr &&sensor) {
 
 void Rover::program_command(const char command_name, command_ptr &&command) {
     commands_map[command_name] = command; // TODO czy nazwy mogą się powtarzać?
+    // Wg. moodle komenda powinna zostać nadpisana więc chyba jest ok
 }
 
 void Rover::land(Point coordinates, Direction direction) {
@@ -49,7 +50,7 @@ void Rover::land(Point coordinates, Direction direction) {
 // TODO niedokończone
 void Rover::execute(const std::string &commands) {
     if (!is_landed) {
-        throw std::exception(); // TODO
+        throw RoverNotLanded(); // TODO
     }
 
     is_stopped = false;
