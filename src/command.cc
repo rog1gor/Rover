@@ -49,14 +49,14 @@ CommandResult MoveBackward::execute(Position position, const sensors_container_t
     return executed_result(new_position, position, sensors);
 }
 
-CommandResult RotateRight::execute(Position position, const sensors_container_t &sensors) {
+CommandResult RotateRight::execute(Position position, [[maybe_unused]]const sensors_container_t &sensors) {
     Position new_position = position;
     new_position.set_direction(get_direction_turned_right(position.get_direction()));
 
     return {new_position, false};
 }
 
-CommandResult RotateLeft::execute(Position position, const sensors_container_t &sensors) {
+CommandResult RotateLeft::execute(Position position, [[maybe_unused]]const sensors_container_t &sensors) {
     Position new_position = position;
     new_position.set_direction(get_direction_turned_left(position.get_direction()));
 
