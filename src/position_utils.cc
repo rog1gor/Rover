@@ -25,7 +25,7 @@ std::ostream &operator<<(std::ostream &os, const Position &position) {
 }
 
 Direction get_direction_of_value(unsigned long value) {
-    static Direction map[] = {NORTH, EAST,SOUTH,WEST};
+    static Direction map[] = {NORTH, EAST, SOUTH, WEST};
 
     return map[value];
 }
