@@ -21,6 +21,8 @@ Direction get_direction_turned_right(const Direction &direction);
 
 Direction get_direction_turned_left(const Direction &direction);
 
+Direction get_opposite_direction(const Direction &direction);
+
 
 class Point;
 using Vector = Point;
@@ -73,6 +75,10 @@ public:
 
     void set_coordinates(Point _coordinates) {
         coordinates = _coordinates;
+    }
+
+    void set_direction(Direction _direction) {
+        direction = _direction;
     }
 };
 

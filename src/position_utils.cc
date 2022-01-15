@@ -49,7 +49,11 @@ Direction get_direction_turned_right(const Direction &direction) {
 }
 
 Direction get_direction_turned_left(const Direction &direction) {
-    return get_direction_of_value((direction - 1) % number_of_directions);
+    return get_direction_of_value((direction + 3) % number_of_directions);
+}
+
+Direction get_opposite_direction(const Direction &direction) {
+    return get_direction_of_value((direction + 2) % number_of_directions);
 }
 
 Vector get_vector_of_direction(const Direction &direction) {
