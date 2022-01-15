@@ -11,5 +11,6 @@ public:
 using sensor_ptr = std::shared_ptr<Sensor>;
 using sensors_container_t = std::vector<sensor_ptr>;
 
+bool check_all_sensors(Position position, const sensors_container_t &sensors);
 
 #endif //ROVER_SENSOR_H
