@@ -48,7 +48,7 @@ void Rover::land(Point coordinates, Direction direction) {
 
 void Rover::execute(const std::string &commands) {
     if (!is_landed) {
-        throw RoverNotLanded();
+        throw RoverNotLanded("Rover did not land");
     }
 
     is_stopped = false;
