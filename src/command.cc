@@ -66,7 +66,7 @@ CommandResult RotateLeft::execute(Position position, [[maybe_unused]]const senso
 CommandResult Compose::execute(Position position, const sensors_container_t &sensors) {
     Position new_position = position;
 
-    for (auto command : commands) {
+    for (const auto &command : commands) {
         CommandResult command_result = command->execute(new_position, sensors);
 
         if (command_result.get_is_stopped()) {
