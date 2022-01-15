@@ -5,9 +5,7 @@
 
 class Sensor {
 public:
-    virtual bool is_safe(coordinate_t x, coordinate_t y) {
-        return true;
-    };
+    virtual bool is_safe(coordinate_t x, coordinate_t y) = 0;
 };
 
 using sensor_ptr = std::shared_ptr<Sensor>;

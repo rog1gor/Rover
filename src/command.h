@@ -23,10 +23,10 @@ public:
 
 class Command {
 protected:
-    bool check_all_sensors(Position position, const sensors_container_t &sensors);
+    static bool check_all_sensors(Position position, const sensors_container_t &sensors);
 
 public:
-    virtual CommandResult execute(Position position, const sensors_container_t &sensors);
+    virtual CommandResult execute(Position position, const sensors_container_t &sensors) = 0;
 };
 
 using command_ptr = std::shared_ptr<Command>;

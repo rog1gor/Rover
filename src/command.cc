@@ -32,11 +32,6 @@ bool Command::check_all_sensors(Position position, const sensors_container_t &se
     return true;
 }
 
-// TODO raczej niepotrzebne
-CommandResult Command::execute(Position position, const sensors_container_t &sensors) {
-    return CommandResult(Position(), {});
-}
-
 CommandResult MoveForward::execute(Position position, const sensors_container_t &sensors) {
     Position new_position = position;
     Vector move_vector = get_vector_of_direction(position.get_direction());
